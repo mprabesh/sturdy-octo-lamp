@@ -41,3 +41,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Output deployed URL
+        run: echo "Deployed URL: ${{ steps.deployment.outputs.page_url }}"
+  post-deployment:
+    needs: deploy-to-pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test deployment
+        run: |
+          curl -f https://YOUR_USERNAME.github.io/YOUR_REPO_NAME || exit 1
+
+    
+
