@@ -47,4 +47,4 @@ jobs:
     steps:
       - name: Test deployment
         run: |
-          curl -f https://mprabesh.github.io/sturdy-locto-lamp || exit 1
+          curl -f https://mprabesh.github.io/sturdy-octo-lamp || exit 1
