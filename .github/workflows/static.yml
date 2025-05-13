@@ -40,6 +40,9 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        # docker build and push image
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.16.0
      
   post-deployment:
     needs: deploy
