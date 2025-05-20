@@ -44,6 +44,8 @@ jobs:
         # docker build and push image
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.16.0
+      - name: Access the variable in the workflow
+        run: echo "$MY_WORKFLOW_VARIABLE"
      
   post-deployment:
     needs: deploy
