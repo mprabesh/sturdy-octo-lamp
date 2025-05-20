@@ -1,5 +1,6 @@
 name: Deploy static content to Pages
-
+env:
+  MY_WORKFLOW_VARIABLE: "The website is up and running."
 on:
   # Runs on pushes targeting the default branch
   push:
@@ -50,4 +51,5 @@ jobs:
     steps:
       - name: Test deployment
         run: |
+          echo "Workflow-level variable in post-deployment: $MY_WORKFLOW_VARIABLE"
           curl -f https://mprabesh.github.io/sturdy-octo-lamp || exit 1
