@@ -26,7 +26,7 @@ jobs:
   
   deploy:
     env:
-      MY_JOB_VARIABLE: "THIS_IS_JOB_VARIABLE"
+      MY_JOB_VARIABLE: "Deploy job completed."
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
