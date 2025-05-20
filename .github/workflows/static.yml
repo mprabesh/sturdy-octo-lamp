@@ -26,7 +26,7 @@ jobs:
   
   deploy:
     env:
-      MY_JOB_VARIABLE: "Deploy job completed."
+      MY_JOB_VARIABLE: "THIS IS DEPLOY JOB."
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -51,7 +51,7 @@ jobs:
           MY_JOB_VARIABLE: ${{ env.MY_JOB_VARIABLE }}
       - name: Access the variable in the workflow
         env:
-          MY_STEP_VARIABLE: "This is a step-level variable."
+          MY_STEP_VARIABLE: "WE ACCESS THE DIFFERENT TYPES OF VARIABLES"
         run: | 
           echo "Job-level variable: $MY_JOB_VARIABLE"
           echo "WORK-level variable: $MY_WORKFLOW_VARIABLE"
