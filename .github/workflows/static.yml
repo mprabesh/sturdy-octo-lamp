@@ -50,9 +50,12 @@ jobs:
         env:
           MY_JOB_VARIABLE: ${{ env.MY_JOB_VARIABLE }}
       - name: Access the variable in the workflow
+        env:
+          MY_STEP_VARIABLE: "This is a step-level variable."
         run: | 
           echo "Job-level variable: $MY_JOB_VARIABLE"
           echo "WORK-level variable: $MY_WORKFLOW_VARIABLE"
+          echo "Step-level variable: $MY_STEP_VARIABLE"
      
   post-deployment:
     needs: deploy
