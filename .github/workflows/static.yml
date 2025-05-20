@@ -23,7 +23,10 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
+  
   deploy:
+    env:
+      MY_JOB_VARIABLE: "THIS_IS_JOB_VARIABLE"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -44,8 +47,12 @@ jobs:
         # docker build and push image
       - name: Build and push Docker images
         uses: docker/build-push-action@v6.16.0
+        env:
+          MY_JOB_VARIABLE: ${{ env.MY_JOB_VARIABLE }}
       - name: Access the variable in the workflow
-        run: echo "$MY_WORKFLOW_VARIABLE"
+        run: | 
+          echo "Job-level variable: $MY_JOB_VARIABLE"
+          echo "WORK-level variable: $MY_WORKFLOW_VARIABLE"
      
   post-deployment:
     needs: deploy
@@ -53,5 +60,4 @@ jobs:
     steps:
       - name: Test deployment
         run: |
-          echo "Workflow-level variable in post-deployment: $MY_WORKFLOW_VARIABLE"
           curl -f https://mprabesh.github.io/sturdy-octo-lamp || exit 1
